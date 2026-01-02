@@ -2,28 +2,27 @@
   * few hints how to update tor browser torrc configuration file
   * could be useful to route more effectively
 #### Usage
-  * close tor browser or keep editor open until tor browser is closed tp save file
+  * close tor browser or keep editor open until tor browser is closed to save file
   * configuration file is at `relative path`
 ```
 joe ./Browser/TorBrowser/Data/Tor/torrc
 ```
-  * optionally add `entry nodes` and set strict to use only specified countries
+  * optionally add **entry nodes** and set strict to use only specified countries
 ```
 EntryNodes "list of countries here without quotes" StrictNodes 1
 ```
-  * optionally `exlude nodes`
+  * optionally **exlude nodes**
 ```
 ExcludeNodes "list of countries here without quotes" StrictNodes 1
 ```
-  * optionally set specific `exit nodes` and set strict to use only specified countries
-  * or set exit nodes to exclude
+  * optionally set specific **exit nodes** or **exlude exit nodes** and set strict to use only specified countries
 ```
 ExitNodes "list of countries here without quotes" StrictNodes 1
 ```
 ```
 ExcludeExitNodes "list of countries here without quotes" StrictNodes 1
 ```
-  * some `country code examples` for your inspiration
+  * some **country code examples** for your inspiration
 ```
 # unknown country code
 {??}
@@ -47,6 +46,6 @@ ExcludeExitNodes "list of countries here without quotes" StrictNodes 1
   * To better understand, the final added configuration `./Browser/TorBrowser/Data/Tor/torrc` lines could look for example like this:
 ```
 EntryNodes {de} StrictNodes 1
-ExcludeExitNodes {de},{??} StrictNodes 1
 ExcludeNodes {us},{ca},{de},{uk},{se},{nl},{??} StrictNodes 1
+ExcludeExitNodes {de},{??} StrictNodes 1
 ```
