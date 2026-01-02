@@ -13,11 +13,15 @@ EntryNodes "list of countries here without quotes" StrictNodes 1
 ```
   * optionally `exlude nodes`
 ```
-ExcludeNodes "list of countries here without quotes"
+ExcludeNodes "list of countries here without quotes" StrictNodes 1
 ```
   * optionally set specific `exit nodes` and set strict to use only specified countries
+  * or set exit nodes to exclude
 ```
 ExitNodes "list of countries here without quotes" StrictNodes 1
+```
+```
+ExcludeExitNodes "list of countries here without quotes" StrictNodes 1
 ```
   * some `country code examples` for your inspiration
 ```
@@ -27,8 +31,8 @@ ExitNodes "list of countries here without quotes" StrictNodes 1
 # you can exclude US or Russia if you do not like the language xDDD
 {ru},{us}
 
-# balkan music countries xDDD
-{gr},{bg},{ro},{hr}
+# balkan music countries or around xDDD
+{gr},{bg},{ro},{hr},{sl},{md}
 
 # some people like or exclude clowns
 {ca}
@@ -40,3 +44,9 @@ ExitNodes "list of countries here without quotes" StrictNodes 1
 {hu},{pl},{bz},{ky},{ml},{al},{mt},{ma},{na},{ua},{es},{se},{pa},{py},{ar},{hk},{aw},{bs},{be},{bz},{bm},{ky},{cf},{co},{cd},{cr},{cu},{cy},{do},{eg},{fi}
 ```
   * finally close tor browser, save file and start browser again
+  * To better understand, the final added configuration `./Browser/TorBrowser/Data/Tor/torrc` lines could look for example like this:
+```
+EntryNodes {de} StrictNodes 1
+ExcludeExitNodes {de},{??} StrictNodes 1
+ExcludeNodes {us},{ca},{de},{uk},{se},{nl},{??} StrictNodes 1
+```
