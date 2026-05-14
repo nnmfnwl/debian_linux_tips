@@ -49,6 +49,7 @@ https://github.com/yxse/NanChat/releases
   * But before you have to replace `YOUR_ADDRESS` with your real XNO/NanBTC/NanUSD or other supported coin address
   * Depending on your CPU cores you can replace -t 4 with -t 6 or whatever number of real CPU cores you want to use for mining
 ```
+cd ~/dexsetup/xmrig/xmrig-6.26.0 &&
 proxychains4 ./xmrig -o xmrig.nanswap.com:3333 -a rx -k -u YOUR_ADDRESS -p x -t 4
 ```
   * After a while you can chec/monitor/request to withdrawal mined funds to your address at:
