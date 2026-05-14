@@ -24,3 +24,10 @@ apt purge `apt-show-versions | grep -v "uptodate$" | grep -v "not\ installed$" |
 ```
 apt-get purge `dpkg --list | grep ^rc | cut -d " " -f3`
 ```
+
+#### clean up apt cache
+```
+apt autoclean 
+apt distclean
+apt clean
+```
