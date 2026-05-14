@@ -25,6 +25,11 @@ apt purge `apt-show-versions | grep -v "uptodate$" | grep -v "not\ installed$" |
 apt-get purge `dpkg --list | grep ^rc | cut -d " " -f3`
 ```
 
+#### auto remove not needed packages
+```
+apt autoremove --purge
+```
+
 #### clean up apt cache
 ```
 apt autoclean 
