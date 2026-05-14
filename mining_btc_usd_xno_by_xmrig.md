@@ -23,7 +23,7 @@ rm -f ${xmrig} &&
 proxychains4 wget "https://github.com/xmrig/xmrig/releases/download/v${xmrigv}/${xmrig}" &&
 (sha256sum ${xmrig} | grep "${xmrigsha}" && (echo "${xmrig} fingerprint verification success") || (sha256sum ${xmrig}; echo "${xmrig} fingerprint verification failed"; rm -f ${xmrig}; false)) &&
 tar --extract -f "${xmrig}" -C "./" &&
-(clamscan * || rm -f ${xmrig}*)
+(clamscan * || rm -f ${xmrig}*) &&
 echo "${xmrig} prepare success"
 ```
   * it is recommended to visit links from this tutorial in Tor Browser to keep your privacy at highest level
