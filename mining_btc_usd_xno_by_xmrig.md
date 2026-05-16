@@ -26,14 +26,14 @@ apt install linux-cpupower lm-sensors screen
 ```
 xmrigv="6.26.0" &&
 xmrig="xmrig-${xmrigv}-linux-static-x64.tar.gz" &&
-xmrigsha="fc6f8ae5f64e4f17481f7e3be29a1c56949f216a998414188003eae1db20c9e5"
+xmrigsha="fc6f8ae5f64e4f17481f7e3be29a1c56949f216a998414188003eae1db20c9e5" &&
 mkdir -p ~/dexsetup/xmrig/ &&
 cd ~/dexsetup/xmrig/ &&
 rm -f ${xmrig} &&
 proxychains4 wget "https://github.com/xmrig/xmrig/releases/download/v${xmrigv}/${xmrig}" &&
 (sha256sum ${xmrig} | grep "${xmrigsha}" && (echo "${xmrig} fingerprint verification success") || (sha256sum ${xmrig}; echo "${xmrig} fingerprint verification failed"; rm -f ${xmrig}; false)) &&
 tar --extract -f "${xmrig}" -C "./" &&
-(clamscan * || rm -f ${xmrig}*) &&
+(clamscan * || (rm -f ${xmrig}* && echo "downloaded package seems compromised by evil")) &&
 echo "${xmrig} prepare success"
 ```
   * it is recommended to visit links from this tutorial in Tor Browser to keep your privacy at highest level
