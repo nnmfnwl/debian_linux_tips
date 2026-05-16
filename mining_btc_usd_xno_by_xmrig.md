@@ -5,13 +5,23 @@
   * NanUSD is USDC backed token in XNO network
   * Nano is native XNO network crypto currency that has NO fees and NO inflation and also NO mining rewards
 
-#### Installation and Dependencies
+#### Installation and Dependencies as ROOT account
   * install dependency packages, commands needs root permissions or sudo
+  * mandatory packages
 ```
 apt update
 apt full-upgrade
 apt install msr-tools tor proxychains4 clamav
 ```
+  * recommended packages installation
+  * cpu power to tune hardware limits and so prevent overheating
+  * lm-sensors to see current CPU temperature
+  * screen great for multiplexing multiple terminal sessions over one SSH
+```
+apt install linux-cpupower lm-sensors screen 
+```
+
+#### Miner installation and configuration as USER account
   * Download and check xmrig package
 ```
 xmrigv="6.26.0" &&
@@ -45,15 +55,34 @@ https://nanchat.com/
 https://github.com/yxse/NanChat/releases
 ```
 #### Usage
-  * Start mining with command
+  * It is recommended to start screen first
+  * open one more screen terminal tab `CTRL a c`
+  * list and switch between opened tabs `CTRL a "`
+  * switch between last two selected tabs `CTRL a a`
+  * detach from screen and keep all programs running `CTRL a d`
+  * to attach to existing in backround running `screen -x`
+```
+screen
+```
+  * in screen 0 open the miner and start or continue mining
   * But before you have to replace `YOUR_ADDRESS` with your real XNO/NanBTC/NanUSD or other supported coin address
   * Depending on your CPU cores you can replace -t 4 with -t 6 or whatever number of real CPU cores you want to use for mining
 ```
-cd ~/dexsetup/xmrig/xmrig-6.26.0 &&
-proxychains4 ./xmrig -o xmrig.nanswap.com:3333 -a rx -k -u YOUR_ADDRESS -p x -t 4
+cd ~/dexsetup/xmrig/xmrig-6.26.0 && proxychains4 ./xmrig -o xmrig.nanswap.com:3333 -a rx -k -u YOUR_ADDRESS -p x -t 4
+```
+  * use `CTRL a c` to open one more screen tab and check current machine temperature and configuration
+```
+sensors | grep -e Core ; cpupower frequency-info | grep -e "hardware limits" -e "The governor" -e "current policy" -e "asserted" ; echo "" ; echo ""
+```
+  * for any cases if your machine gets overheating, to prevent damage, you can as ROOT reconfigure CPU performance
+  * for example limit maximum machine CPU frequency to 1.5 GHZ by `freq=1.5G`
+  * Below command needs specify value of `freq` variable before usage
+```
+freq= &&
+cpupower --cpu all frequency-set --max ${freq}
 ```
   * After a while you can chec/monitor/request to withdrawal mined funds to your address at:
 ```
-https://nanswap.com/mining/
+https://nanswap.com/mining/nano
 ```
   * Enjoy the time :-)
