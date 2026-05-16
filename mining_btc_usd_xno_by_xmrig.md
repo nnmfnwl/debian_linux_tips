@@ -54,7 +54,7 @@ https://nault.cc/
 https://nanchat.com/
 https://github.com/yxse/NanChat/releases
 ```
-#### Usage
+#### Screen Terminal Multiplexer usage
   * It is recommended to start screen first
   * open one more screen terminal tab `CTRL a c`
   * list and switch between opened tabs `CTRL a "`
@@ -64,16 +64,19 @@ https://github.com/yxse/NanChat/releases
 ```
 screen
 ```
-  * in screen 0 open the miner and start or continue mining
-  * But before you have to replace `YOUR_ADDRESS` with your real XNO/NanBTC/NanUSD or other supported coin address
-  * Depending on your CPU cores you can replace -t 4 with -t 6 or whatever number of real CPU cores you want to use for mining
+#### Screen Terminal Tab 1
+  * start/continue mining
+  * replace `YOUR_ADDRESS` with XNO/NanBTC/NanUSD or other supported coin address
+  * Depending on number of machine CPU cores, replace -t 4 with -t 6 or whatever number of real CPU cores you want to use for mining
 ```
 cd ~/dexsetup/xmrig/xmrig-6.26.0 && proxychains4 ./xmrig -o xmrig.nanswap.com:3333 -a rx -k -u YOUR_ADDRESS -p x -t 4
 ```
-  * use `CTRL a c` to open one more screen tab and check current machine temperature and configuration
+#### Screen Terminal Tab 2
+  * check current machine temperature and configuration
 ```
 sensors | grep -e Core ; cpupower frequency-info | grep -e "hardware limits" -e "The governor" -e "current policy" -e "asserted" ; echo "" ; echo ""
 ```
+#### Screen Terminal Tab 3
   * for any cases if your machine gets overheating, to prevent damage, you can as ROOT reconfigure CPU performance
   * for example limit maximum machine CPU frequency to 1.5 GHZ by `freq=1.5G`
   * Below command needs specify value of `freq` variable before usage
@@ -81,6 +84,7 @@ sensors | grep -e Core ; cpupower frequency-info | grep -e "hardware limits" -e 
 freq= &&
 cpupower --cpu all frequency-set --max ${freq}
 ```
+#### Check mining results
   * After a while you can chec/monitor/request to withdrawal mined funds to your address at:
 ```
 https://nanswap.com/mining/nano
